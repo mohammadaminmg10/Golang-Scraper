@@ -96,11 +96,13 @@ func scrape(url string, ch chan<- models.Professors) {
 
 	c.OnHTML("#tab-0", func(e *colly.HTMLElement) {
 		name := e.ChildText("a")
-		price := e.ChildText("a")
+		//name := e.DOM.Find("span")
+		//fmt.Println(name)
+		email := e.ChildText("a")
 
 		professor = models.Professors{
 			Name:  name,
-			Email: price,
+			Email: email,
 		}
 	})
 
